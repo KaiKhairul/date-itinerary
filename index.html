@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan Date Sabtu 🤍</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FDF6F0;
+    --peach: #FDDBC7;
+    --blush: #F9B8C4;
+    --rose: #E8A0B4;
+    --lilac: #D4B8E0;
+    --mauve: #C49ABD;
+    --text-dark: #4A3340;
+    --text-mid: #7A5568;
+    --text-soft: #A07890;
+    --white: #FFFCFA;
+    --shadow: rgba(180, 120, 150, 0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--cream);
+    color: var(--text-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* ── Petal ambient background ── */
+  .petals-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .petal {
+    position: absolute;
+    width: 12px;
+    height: 16px;
+    border-radius: 50% 0 50% 0;
+    opacity: 0;
+    animation: petalFall linear infinite;
+  }
+  @keyframes petalFall {
+    0%   { transform: translateY(-30px) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.6; }
+    90%  { opacity: 0.3; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* ── Sticky header ── */
+  .sticky-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(253, 246, 240, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(232, 160, 180, 0.25);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateY(-100%);
+    transition: transform 0.35s ease;
+  }
+  .sticky-header.visible { transform: translateY(0); }
+  .sticky-header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: var(--text-dark);
+    flex: 1;
+  }
+  .sticky-progress {
+    font-size: 12px;
+    color: var(--text-soft);
+    font-weight: 600;
+  }
+
+  /* ── Main container ── */
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 430px;
+    margin: 0 auto;
+    padding: 0 0 80px;
+  }
+
+  /* ── Hero header ── */
+  .hero {
+    padding: 56px 24px 32px;
+    text-align: center;
+    position: relative;
+  }
+  .hero-emoji {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 12px;
+    animation: floatHeart 3s ease-in-out infinite;
+  }
+  @keyframes floatHeart {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    line-height: 1.3;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+  }
+  .hero-title em {
+    color: var(--rose);
+    font-style: italic;
+  }
+  .hero-subtitle {
+    font-size: 14px;
+    color: var(--text-soft);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ── Countdown ── */
+  .countdown-card {
+    margin: 0 20px 20px;
+    background: linear-gradient(135deg, var(--blush) 0%, var(--peach) 100%);
+    border-radius: 20px;
+    padding: 20px 24px;
+    box-shadow: 0 4px 20px rgba(232, 160, 180, 0.35);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .countdown-card::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+  }
+  .countdown-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    opacity: 0.85;
+    margin-bottom: 12px;
+  }
+  .countdown-blocks {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .cd-block {
+    background: rgba(255,255,255,0.35);
+    border-radius: 12px;
+    padding: 10px 14px;
+    min-width: 60px;
+    backdrop-filter: blur(4px);
+  }
+  .cd-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--white);
+    display: block;
+    line-height: 1;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    animation: heartbeat 1s ease-in-out infinite;
+  }
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+  }
+  .cd-unit {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--white);
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .countdown-date-display {
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--white);
+    opacity: 0.9;
+    font-weight: 600;
+  }
+
+  /* ── Section label ── */
+  .section-label {
+    padding: 16px 24px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+  }
+
+  /* ── Dress code card ── */
+  .dress-card {
+    margin: 0 20px 12px;
+    background: var(--white);
+    border-radius: 18px;
+    padding: 18px 20px;
+    box-shadow: 0 2px 16px var(--shadow);
+    border-left: 4px solid var(--lilac);
+  }
+  .dress-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .dress-emoji { font-size: 22px; }
+  .dress-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--text-dark);
+  }
+  .warning-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: linear-gradient(90deg, #FFE8D6, #FFDDE8);
+    color: var(--rose);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .dress-note {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.6;
+    background: linear-gradient(135deg, #FFF8F5, #FFF0F5);
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-top: 8px;
+  }
+
+  /* ── Timeline ── */
+  .timeline {
+    padding: 0 20px;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 44px;
+    top: 24px;
+    bottom: 24px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--blush), var(--lilac));
+    border-radius: 2px;
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .tl-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    padding-top: 4px;
+  }
+  .tl-time {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-soft);
+    text-align: center;
+    line-height: 1.2;
+    min-width: 48px;
+  }
+
+  .tl-checkbox {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    border: 2.5px solid var(--rose);
+    background: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  .tl-checkbox:active { transform: scale(0.9); }
+  .tl-checkbox.checked {
+    background: linear-gradient(135deg, var(--blush), var(--rose));
+    border-color: var(--rose);
+    box-shadow: 0 2px 10px rgba(232, 160, 180, 0.5);
+  }
+  .tl-checkbox .checkmark {
+    font-size: 13px;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.2s ease;
+    color: white;
+  }
+  .tl-checkbox.checked .checkmark { opacity: 1; transform: scale(1); }
+
+  .tl-card {
+    flex: 1;
+    background: var(--white);
+    border-radius: 16px;
+    padding: 14px 16px;
+    box-shadow: 0 2px 12px var(--shadow);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .tl-card:active { transform: scale(0.98); }
+  .tl-card.done {
+    opacity: 0.55;
+    background: #FBF5F0;
+  }
+  .tl-card.done .tl-card-title { text-decoration: line-through; color: var(--text-soft); }
+
+  .tl-card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.4;
+    margin-bottom: 4px;
+    transition: color 0.3s, text-decoration 0.3s;
+  }
+  .tl-card-sub {
+    font-size: 12px;
+    color: var(--text-soft);
+    line-height: 1.5;
+  }
+  .tl-card-note {
+    font-size: 11.5px;
+    color: var(--mauve);
+    font-style: italic;
+    margin-top: 6px;
+    line-height: 1.4;
+    background: linear-gradient(90deg, #FFF0F5, #FBF5FF);
+    border-radius: 8px;
+    padding: 6px 10px;
+  }
+  .tl-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 8px;
+  }
+  .tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+  .tag-time { background: #FFF0F5; color: var(--rose); }
+  .tag-prayer { background: #F0F5FF; color: #8AA8D4; }
+  .tag-food { background: #FFF8E6; color: #C89A3A; }
+  .tag-fun { background: #F5F0FF; color: #9A7EC8; }
+
+
+
+
+
+  /* ── Footer ── */
+  .footer {
+    padding: 40px 24px 32px;
+    text-align: center;
+  }
+  .footer-heart { font-size: 32px; display: block; margin-bottom: 10px; animation: floatHeart 2.5s ease-in-out infinite; }
+  .footer-msg {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--text-dark);
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+  .footer-sub {
+    font-size: 12px;
+    color: var(--text-soft);
+    letter-spacing: 0.05em;
+  }
+
+
+</style>
+</head>
+<body>
+
+<!-- Petal ambient background -->
+<div class="petals-bg" id="petalsBg"></div>
+
+<!-- Sticky header -->
+<div class="sticky-header" id="stickyHeader">
+  <div class="sticky-header-title">Plan Date Sabtu 🤍</div>
+
+</div>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero" id="heroTop">
+    <span class="hero-emoji">🤍</span>
+    <h1 class="hero-title">Plan Date Sabtu<br>dengan <em>Anis</em></h1>
+    <p class="hero-subtitle">Let's make it a great day!</p>
+  </div>
+
+  <!-- Countdown -->
+  <div class="countdown-card">
+    <div class="countdown-label">⏳ Countdown to our date</div>
+    <div class="countdown-blocks">
+      <div class="cd-block"><span class="cd-num" id="cdDays">--</span><span class="cd-unit">Days</span></div>
+      <div class="cd-block"><span class="cd-num" id="cdHours">--</span><span class="cd-unit">Hrs</span></div>
+      <div class="cd-block"><span class="cd-num" id="cdMins">--</span><span class="cd-unit">Min</span></div>
+      <div class="cd-block"><span class="cd-num" id="cdSecs">--</span><span class="cd-unit">Sec</span></div>
+    </div>
+    <div class="countdown-date-display">📅 Sabtu, 9 Ogos 2025 — 10:30 AM</div>
+  </div>
+
+  <!-- Dress code -->
+  <div class="section-label">👗 Dress Code</div>
+  <div class="dress-card">
+    <div class="dress-header">
+      <span class="dress-emoji">✨</span>
+      <div class="dress-title">Bebas & Casual</div>
+    </div>
+    <span class="warning-badge">⚠️ Tapi jersey takleh yer 😔</span>
+    <div class="dress-note">🥐 Sebelum gerak, sarapan ringan-ringan yer — jangan keluar perut kosong!</div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="section-label">🗓️ Our Itinerary</div>
+  <div class="timeline" id="timeline"></div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span class="footer-heart">💕</span>
+    <div class="footer-msg">Can't wait for our date! ✨</div>
+    <div class="footer-sub">made with love, just for you 🌸</div>
+  </div>
+
+</div>
+
+<script>
+// ── Itinerary data ──
+const items = [
+  {
+    time: "10:30 AM",
+    title: "Start Perjalanan Ke Kwasa Sentral",
+    sub: "Estimate 45 min – 1 jam",
+    note: null,
+    tags: ["time"],
+    emoji: "🚗"
+  },
+  {
+    time: "11:30 AM",
+    title: "OTW ke 1 Utama (OU) dari Kwasa Sentral",
+    sub: "Estimate 30 – 40 minit",
+    note: null,
+    tags: ["time"],
+    emoji: "🛣️"
+  },
+  {
+    time: "12:00 PM",
+    title: "Arrival & Photobooth Hunt! 📸",
+    sub: "Estimate 30 – 45 minit",
+    note: "Cari photobooth yang awak nak dulu — tak silap saya, saya tak tahu benda ni 😂",
+    tags: ["fun"],
+    emoji: "🎞️"
+  },
+  {
+    time: "12:30 PM",
+    title: "Makan Tengah Hari 🍽️",
+    sub: "Estimate 45 minit",
+    note: null,
+    tags: ["food"],
+    emoji: "🍜"
+  },
+  {
+    time: "1:20 PM",
+    title: "GSC For Wayang 🍿🎬",
+    sub: "1:20 PM – 1:30 PM • Jangan lambat!",
+    note: null,
+    tags: ["fun"],
+    emoji: "🎬"
+  },
+  {
+    time: "3:30 PM",
+    title: "Solat Zohor 🕌",
+    sub: "3:20 PM / 3:30 PM",
+    note: null,
+    tags: ["prayer"],
+    emoji: "🕌"
+  },
+  {
+    time: "4:00 PM",
+    title: "Secret Garden 🌿✨",
+    sub: "Time to lepak and enjoy!",
+    note: null,
+    tags: ["fun"],
+    emoji: "🌿"
+  },
+  {
+    time: "5:00 PM",
+    title: "Solat Asar 🕌",
+    sub: "Jangan skip!",
+    note: null,
+    tags: ["prayer"],
+    emoji: "🕌"
+  },
+  {
+    time: "5:30 PM",
+    title: "Free Roam 🛍️",
+    sub: "Watson, Panda Eyes, etc.",
+    note: null,
+    tags: ["fun"],
+    emoji: "🛍️"
+  },
+  {
+    time: "6:00 PM",
+    title: "Bergerak Pulang dari One Utama 🚗💨",
+    sub: "Heading home!",
+    note: null,
+    tags: ["time"],
+    emoji: "🏠"
+  }
+];
+
+const tagLabels = {
+  time: { label: "⏱ Transit", cls: "tag-time" },
+  fun: { label: "🎉 Fun", cls: "tag-fun" },
+  food: { label: "🍴 Makan", cls: "tag-food" },
+  prayer: { label: "🕌 Solat", cls: "tag-prayer" }
+};
+
+let checked = new Array(items.length).fill(false);
+
+function buildTimeline() {
+  const tl = document.getElementById('timeline');
+  tl.innerHTML = '';
+  items.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'timeline-item';
+    div.innerHTML = `
+      <div class="tl-left">
+        <div class="tl-time">${item.time.replace(' ', '<br>')}</div>
+        <div class="tl-checkbox ${checked[i] ? 'checked' : ''}" id="chk${i}" onclick="toggleCheck(${i})">
+          <span class="checkmark">✓</span>
+        </div>
+      </div>
+      <div class="tl-card ${checked[i] ? 'done' : ''}" id="card${i}" onclick="toggleCheck(${i})">
+        <div class="tl-card-title">${item.emoji} ${item.title}</div>
+        ${item.sub ? `<div class="tl-card-sub">${item.sub}</div>` : ''}
+        ${item.note ? `<div class="tl-card-note">"${item.note}"</div>` : ''}
+        <div class="tl-card-tags">
+          ${item.tags.map(t => `<span class="tag ${tagLabels[t].cls}">${tagLabels[t].label}</span>`).join('')}
+        </div>
+      </div>
+    `;
+    tl.appendChild(div);
+  });
+  updateProgress();
+}
+
+function toggleCheck(i) {
+  checked[i] = !checked[i];
+  const chk = document.getElementById(`chk${i}`);
+  const card = document.getElementById(`card${i}`);
+  chk.classList.toggle('checked', checked[i]);
+  card.classList.toggle('done', checked[i]);
+  updateProgress();
+}
+
+function updateProgress() {}
+
+// ── Countdown ──
+function updateCountdown() {
+  // Date: Saturday (next Saturday relative to page open, or a fixed date)
+  // Using next upcoming Saturday at 10:30 AM
+  const now = new Date();
+  const target = new Date();
+  const day = target.getDay(); // 0=Sun, 6=Sat
+  const daysUntilSat = (6 - day + 7) % 7 || 7;
+  target.setDate(target.getDate() + daysUntilSat);
+  target.setHours(10, 30, 0, 0);
+
+  const diff = target - now;
+  if (diff <= 0) {
+    ['cdDays','cdHours','cdMins','cdSecs'].forEach(id => document.getElementById(id).textContent = '00');
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cdDays').textContent = String(d).padStart(2,'0');
+  document.getElementById('cdHours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cdMins').textContent = String(m).padStart(2,'0');
+  document.getElementById('cdSecs').textContent = String(s).padStart(2,'0');
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+
+// ── Sticky header ──
+const stickyHeader = document.getElementById('stickyHeader');
+const hero = document.getElementById('heroTop');
+window.addEventListener('scroll', () => {
+  const heroBottom = hero.getBoundingClientRect().bottom;
+  stickyHeader.classList.toggle('visible', heroBottom < 0);
+});
+
+// ── Petals ──
+function spawnPetals() {
+  const container = document.getElementById('petalsBg');
+  const colors = ['#FDDBC7','#F9B8C4','#E8A0B4','#D4B8E0','#FFEAEF'];
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.top = '-20px';
+    p.style.background = colors[Math.floor(Math.random() * colors.length)];
+    p.style.animationDuration = (8 + Math.random() * 12) + 's';
+    p.style.animationDelay = (Math.random() * 15) + 's';
+    p.style.width = (8 + Math.random() * 10) + 'px';
+    p.style.height = (10 + Math.random() * 12) + 'px';
+    p.style.opacity = (0.3 + Math.random() * 0.4).toString();
+    p.style.transform = `rotate(${Math.random() * 360}deg)`;
+    container.appendChild(p);
+  }
+}
+spawnPetals();
+
+// Build everything
+buildTimeline();
+</script>
+</body>
+</html>
